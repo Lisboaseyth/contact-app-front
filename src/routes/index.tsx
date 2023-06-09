@@ -13,7 +13,7 @@ export const RoutesPages = () => {
             <Route element={<ProtectedRoutes />} >
                 <Route path="/dashboard" element={<DashboardPage />}/>
             </Route>
-            <Route path="/teste" element={<DashboardPage />}/>
+            {/* <Route path="/teste" element={<DashboardPage />}/> */}
             <Route path="*" element={<NotFoundPage />}/>
         </Routes>
     )

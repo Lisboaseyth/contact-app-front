@@ -21,3 +21,34 @@ export const schemaRegister = yup.object().shape({
         .string()
         .required('Contato é obrigatório'),
 })
+
+export const schemaRegisterContact = yup.object().shape({
+    name: yup
+      .string()
+      .required('Nome é obrigatório')
+      .min(3, 'Nome precisa ter pelo menos 3 caracteres')
+      .max(30, 'Nome precisa ter no máximo 30 caracteres'),
+    email: yup
+      .string()
+      .required('Nome é obrigatório')
+      .email('Insira um e-mail válido')
+      .min(3, 'Nome precisa ter pelo menos 3 caracteres')
+      .max(40, 'Nome precisa ter no máximo 40 caracteres'),
+    contactNumber: yup
+        .string()
+        .required('Contato é obrigatório'),
+})
+
+export const schemaUpdateContact = yup.object().shape({
+    name: yup
+      .string()
+      .min(3, 'Nome precisa ter pelo menos 3 caracteres')
+      .max(30, 'Nome precisa ter no máximo 30 caracteres'),
+    email: yup
+      .string()
+      .email('Insira um e-mail válido')
+      .min(3, 'Nome precisa ter pelo menos 3 caracteres')
+      .max(40, 'Nome precisa ter no máximo 40 caracteres'),
+    contactNumber: yup
+        .string()
+})
