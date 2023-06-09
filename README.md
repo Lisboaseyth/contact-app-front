@@ -37,9 +37,29 @@ npm run dev
 yarn dev
 ```
 
-3 - O Projeto está realizando as requisições com urlBase do deploy do projeto back-end desenvolvido para este projeto.\
-  - Link do [repositório](https://github.com/Lisboaseyth/back-project-kenzie)\
+3 - É necessário baixar o [repositório](https://github.com/Lisboaseyth/back-project-kenzie) back-end criado para essa aplicação, após baixá-la deve ser feito a instalação das dependências com os seguintes comandos:
+```bash
+# Caso use o npm
+npm install
+
+# Caso use o yarn
+yarn
+```
+
+4 - Após a instalação das dependências é necessário o comando para executar o projeto:
+```bash
+# Caso use o npm
+npm run dev
+
+# Caso use o yarn
+yarn dev
+```
+
+5 - Após os dois projetos estarem em execução, estará pronto para uso!
+
+5 - O Projeto está realizando as requisições com urlBase do http://localhost:3000 e caso deseje pode substituir o urlBase para o do deploy do projeto back-end desenvolvido para este projeto.\
   - urlBase do deploy: https://contact-app-x6qr.onrender.com
+  - localhost: http//localhost:3000
  
 ## Principais Bibliotecas e Linguagens
 
