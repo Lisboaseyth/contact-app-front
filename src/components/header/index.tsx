@@ -1,65 +1,67 @@
-import { useContext } from "react"
-import { ClientContext } from "../../contexts"
-import { DivBtn, DivSeach, DivLogo, HeaderDashboadStyled } from "./style"
-import Logo from "../../assets/logo.svg"
+import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons"
+import Logo from "../../assets/logoBlue.png"
 import {
-  Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
   Button,
-  useDisclosure,
+  Flex,
+  Img,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  useMediaQuery,
 } from '@chakra-ui/react'
+import { useContext, useEffect, useState } from "react"
+import { ClientContext } from "../../contexts"
+import { ModalProfile } from "../modal"
 
 
 export const HeaderPage = () => {
 
-  const { logoutClient, client } = useContext(ClientContext)
+  const [web, setWeb] = useState(true)
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isMobileScreen] = useMediaQuery("(max-width: 720px)");
+  const {logoutClient, setModalProfile, client} = useContext(ClientContext)
+
+  const modalIsOpen = () => {
+    setModalProfile(true)
+  }
+
+  useEffect(() => {
+    setWeb(!isMobileScreen);
+  }, [isMobileScreen]);
 
   return (
-
-    <HeaderDashboadStyled>
-        <DivLogo>
-            <img src={Logo} alt="" />
-        </DivLogo>
-        <DivBtn>
-            <DivSeach>
-            <Button  colorScheme='teal' onClick={onOpen}>
-              Perfil
-            </Button>
-            <Drawer
-              isOpen={isOpen}
-              placement='right'
-              onClose={onClose}
-            >
-              <DrawerOverlay />
-              <DrawerContent>
-                <DrawerCloseButton />
-                <DrawerHeader>Informações de Perfil</DrawerHeader>
-
-                <DrawerBody>
-                  <h2>Name: Pedro Lisboa</h2>
-                  <h2>Email: pedro@mail.com</h2>
-                  <p>Contato: (88)992710349</p>
-                </DrawerBody>
-
-                <DrawerFooter>
-                  <Button variant='outline' mr={3} onClick={onClose}>
-                    Fechar
-                  </Button>
-                  <Button colorScheme='blue'>Alterar</Button>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-              <button onClick={() => logoutClient}>Sair</button>
-            </DivSeach>
-            <button  className='btnDefault'></button>
-        </DivBtn>
-    </HeaderDashboadStyled>
+    <Flex
+      fontFamily={"quickSand"}
+      as={"header"} bg={"white"}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+      h={{ base: "230px", md: "80px" }}
+      paddingInline={{base: "60px", md: "60px"}}
+    >
+      <ModalProfile />
+      <Img src={Logo} w={"200px"} />
+      {
+        web ? (
+        <Flex>
+          <Button onClick={() => modalIsOpen()} bg={"#00296F"} _hover={{bg: "blue.2"}} color={"white"} marginRight={"5px"}>Ver Perfil</Button>
+          <Button onClick={() => logoutClient()} bg={"#00296F"} _hover={{bg: "blue.2"}} color={"white"}>Sair</Button>
+        </Flex>
+        ) : (
+           <Menu>
+              {({ isOpen }) => (
+                <>
+                  <MenuButton isActive={isOpen} as={Button} rightIcon={isOpen ? <CloseIcon/> : <HamburgerIcon/> }>
+                  </MenuButton>
+                  <MenuList>
+                    <MenuItem onClick={() => modalIsOpen()}>Profile</MenuItem>
+                    <MenuItem onClick={() => logoutClient()}>Sair</MenuItem>
+                  </MenuList>
+                </>
+              )}
+            </Menu>
+        )
+      }
+    </Flex>
   )
 }
