@@ -20,7 +20,7 @@ export const HeaderPage = () => {
   const [web, setWeb] = useState(true)
 
   const [isMobileScreen] = useMediaQuery("(max-width: 720px)");
-  const {logoutClient, setModalProfile, client} = useContext(ClientContext)
+  const {logoutClient, setModalProfile} = useContext(ClientContext)
 
   const modalIsOpen = () => {
     setModalProfile(true)

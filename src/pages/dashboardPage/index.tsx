@@ -25,7 +25,7 @@ import { iFormRegisterContact } from "../registerPage/types"
 import { api } from "../../services"
 import pdfMake from "pdfmake/build/pdfmake"
 import pdfFonts from "pdfmake/build/vfs_fonts"
-import { TDocumentDefinitions } from "pdfmake/interfaces"
+
 
 export const DashboardPage = () => {
 
