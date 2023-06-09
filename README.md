@@ -11,6 +11,7 @@ Login Page: Página onde o cliente irá realizar o login com sua conta cadastrad
 Register Page: Página onde o novo cliente irá realizar o seu cadastro.\
 Dashboard: Página acessada após o cliente realizar o login, nela há várias funcionalidades:
   - Botão onde é possivel realizar a inclusão de novos contatos em sua agenda.
+  - Botão que ao ser clicado gera um relatório .PDF constando todas as informações do cliente logado e dos contatos adicionados.
   - Atualizar contatos: Em cada contato cadastrado há um botão onde irá abrir um modal com todas as informações do mesmo,
 e é possível realizar a atualização caso haja ou até mesmo fazer a exclusão.
   - Botão onde irá abrir um modal com todas as informações do cliente logado.
