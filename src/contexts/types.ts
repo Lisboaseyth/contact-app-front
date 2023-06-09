@@ -42,6 +42,7 @@ export interface iDataLogin {
 }
 
 export interface iClientObject {
+    id: any
     info?: object
     name?: string
     email?: string
