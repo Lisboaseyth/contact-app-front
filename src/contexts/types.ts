@@ -17,7 +17,7 @@ export interface iClientTypes {
     loginClient(data: iDataLogin): void
     logoutClient(): void
     client: iClientObject
-    setClient: React.Dispatch<object>
+    setClient: React.Dispatch<React.SetStateAction<object>>
     setContact: React.Dispatch<object[]>
     clientToken: string
     contact: iContactObject[]
@@ -42,10 +42,9 @@ export interface iDataLogin {
 }
 
 export interface iClientObject {
-    id: any
+    id?: string
     info?: object
     name?: string
     email?: string
     contactNumber?: string
 }
-

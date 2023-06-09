@@ -25,13 +25,13 @@ export const CardContact = ({ name, email, contactNumber, id }: iContactObject) 
 
     const { deleteContact, updateContact } = useContext(ClientContext)
 
-    const { register, handleSubmit } = useForm<iFormUpdateContact>({
+    const { register, handleSubmit, reset } = useForm<iFormUpdateContact>({
         resolver: yupResolver(schemaUpdateContact)
       })
 
     const onSubmit = (data: iContactObject) => {
-        console.log(data)
-        updateContact(`${id}`, data)
+      updateContact(`${id}`, data)
+      reset()
     };
 
     return(

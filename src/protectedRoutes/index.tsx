@@ -1,15 +1,13 @@
-import { useContext } from "react"
-import { ClientContext } from "../contexts"
 import { Navigate, Outlet } from "react-router-dom"
 
 export const ProtectedRoutes = () => {
 
-    const { clientToken } = useContext(ClientContext)
+    const token = localStorage.getItem("@ContactApp:token")
 
   return (
     <>
         {
-            clientToken ? (
+            token ? (
                 <Outlet />
             ) : (
                 <Navigate to="/" />

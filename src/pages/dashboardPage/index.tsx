@@ -29,8 +29,6 @@ import pdfFonts from "pdfmake/build/vfs_fonts"
 
 export const DashboardPage = () => {
 
-
-
   const { contact, client, registerContact, deleteContact, updateContact, setContact } = useContext(ClientContext)
 
   const { isOpen, onOpen, onClose } = useDisclosure()

@@ -1,9 +1,9 @@
 import { iDataLogin } from "../../contexts/types";
 import { schemaLogin } from "./schema";
 import { iFormLogin } from "./types";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Form, Input, } from "./style";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ClientContext } from "../../contexts";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -13,7 +13,7 @@ import { Button, Center, Flex, Img } from "@chakra-ui/react";
 
 export const LoginPage = () => {
 
-    const { loginClient, loading } = useContext(ClientContext)
+    const { loginClient } = useContext(ClientContext)
 
     const { register, handleSubmit, formState: { errors } } = useForm<iFormLogin>({
         resolver: yupResolver(schemaLogin)

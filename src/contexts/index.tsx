@@ -16,7 +16,7 @@ export const ClientProvider = ({ children }: iClientProvider) => {
 
     const [loading, setLoading] = useState(false)
 
-    const [clientToken] = useState<string>((localStorage.getItem("@ContactApp:token") as string));
+    const [clientToken] = useState(localStorage.getItem("@ContactApp:token") as string);
 
     const navigate = useNavigate()
 
@@ -42,9 +42,6 @@ export const ClientProvider = ({ children }: iClientProvider) => {
             setLoading(true)
             const resp = await api.post('/login', data)
             setClient(resp.data.info)
-            console.log(client);
-            
-            localStorage.clear()
             localStorage.setItem('@ContactApp:token', resp.data.info.token)
             localStorage.setItem('@ContactApp:Id', resp.data.info.id)
             navigate("/dashboard")
@@ -144,7 +141,6 @@ export const ClientProvider = ({ children }: iClientProvider) => {
                 }
             })
             setContact(resp.data)
-            console.log(resp.data)
         } catch (error) {
             console.log(error);
             

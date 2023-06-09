@@ -19,7 +19,6 @@ export const RegisterPage = () => {
     })
     
     const onSubmit = (data: iFormRegister) => {
-        console.log(data);
         registerClient(data)
     }
     
